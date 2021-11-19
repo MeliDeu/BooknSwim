@@ -1,0 +1,43 @@
+﻿@model Projekt_BookNSwim.Models.HotelsDetails;
+
+@section MetaTags
+{
+    <meta name="keywords" content="Book'N'Swim, Pools, Hotels, Booking, @Model.name" />
+}
+
+<h2>Booking</h2>
+
+<div id="bookHotelInfoContainer">
+    <h3>@Model.name</h3>
+    <h5>Contact</h5>
+    <p>Phone: @Model.phone</p>
+    <p>Address: @Model.address @Model.city @Model.postal, @Model.country</p>
+    <div id="hotelInfoBx">
+        <label><strong>Opening hours:</strong></label>
+        <p>@Model.opening_time - @Model.closing_time</p>
+        <label><strong>Price per person/hour:</strong></label>
+        <p>@Model.pricing SEK</p>
+    </div>
+</div>
+
+<form id="bookForm" asp-action="Book">
+    <div id="bookDateBx" class="formDivar">
+        <label>Choose a date:</label>
+        <input name="date" type="date" required />
+    </div>
+    <div id="bookTimeBx" class="formDivar">
+        <label>During what time would you like to go?</label>
+        <input type="time" name="start-time" min="@Model.opening_time" required /> -
+        <input type="time" name="stop-time" max="@Model.closing_time" required />
+    </div>
+    <div id="bookTimeBx" class="formDivar">
+        <label>How big is your company</label>
+        <input type="number" name="visitors" min="1" max="@Model.max_visitors" required />
+    </div>
+    <p class="alert-danger">@ViewBag.errmsg</p>
+    <input class="btn-primary btn" type="submit" value="Book" />
+</form>
+
+
+@Html.ActionLink("Back to all Hotels", "HotelMainPage", "Hotel")
+@Html.ActionLink("Show my profile", "Profile", "User")

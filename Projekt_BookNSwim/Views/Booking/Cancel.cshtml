@@ -1,0 +1,24 @@
+﻿@model Projekt_BookNSwim.Models.ViewModelHUBSingle
+
+@{
+    ViewData["Title"] = "Cancel";
+}
+@section MetaTags
+{
+    <meta name="keywords" content="Book'N'Swim, Pools, Hotels, Booking, Cancel" />
+}
+
+<h1>Cancel</h1>
+
+<h3>Are you sure you want to cancel your booking?</h3>
+<div>
+    <hr />
+    <h4>Your visit at @Model.hotel.name for @Model.booking.start_date.ToString("yyyy-dd-MM")</h4>
+    <p>Booked time: @Model.booking.time</p>
+    <hr />
+
+    <form asp-action="Cancel">
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        @Html.ActionLink("Back to profile", "Profile", "User")
+    </form>
+</div>

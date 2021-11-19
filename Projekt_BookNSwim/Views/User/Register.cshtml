@@ -1,0 +1,58 @@
+﻿@model Projekt_BookNSwim.Models.UserDetails
+
+@{
+    ViewData["Title"] = "Register";
+}
+
+@section MetaTags
+{
+    <meta name="keywords" content="Book'N'Swim, Pools, Hotels, Booking, Register" />
+}
+
+<h1>Register</h1>
+
+<p>Please enter your information in the form below to create an account for Book'N'Swim</p>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Register">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="userUserName" class="control-label"></label>
+                <input id="userUserName" asp-for="userUserName" class="form-control" type="text" autocomplete="username" aria-required="true" required/>
+                <span asp-validation-for="userUserName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="userPassword" class="control-label"></label>
+                <input id="userPassword" asp-for="userPassword" class="form-control" type="password" autocomplete="new-password" aria-required="true" required/>
+                <span asp-validation-for="userPassword" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="userEmail" class="control-label"></label>
+                <input id="userEmail" asp-for="userEmail" class="form-control" type="email" autocomplete="email" aria-required="true" required/>
+                <span asp-validation-for="userEmail" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="userFirstName" class="control-label"></label>
+                <input id="userFirstName" asp-for="userFirstName" class="form-control" type="text" autocomplete="given-name" aria-required="true" required/>
+                <span asp-validation-for="userFirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="userLastName" class="control-label"></label>
+                <input id="userLastName" asp-for="userLastName" class="form-control" type="text" autocomplete="family-name" aria-required="true" required/>
+                <span asp-validation-for="userLastName" class="text-danger"></span>
+            </div>
+            <div class="errormsg">
+                <p>@ViewBag.error</p>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Register" class="btn btn-primary" />
+                <a class="startLinks" asp-action="Login">Login</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,52 @@
+﻿@model IEnumerable<Projekt_BookNSwim.Models.HotelsDetails>;
+@section MetaTags
+    {
+    <meta name="keywords" content="Book'N'Swim, Pools, Hotels, Overview, Book" />
+}
+@{ ViewData["Title"] = "Hotels"; }
+
+<form id="seachBoxHotels" asp-action="HotelMainPage">
+    @*<label>Filter hotels by country:</label>
+        <select id="countriesSelect" name="countryFilter">
+            <option selected value=""></option>
+        </select>*@
+    <div id="searchBoxHotelsCity">
+        <label>Search for hotel by city:</label>
+        <input class="searchinput" id="citySearch" name="citySearch" placeholder="City" />
+    </div>
+    <div id="searchBoxHotelsName">
+        <label>Search for hotel by name:</label>
+        <input class="searchinput" id="nameSearch" name="nameSearch" placeholder="Name" />
+    </div>
+    <button disabled="disabled" id="searchBtn" class="btn" type="submit">Search</button>
+</form>
+
+@Html.ActionLink("Show all hotels", "HotelMainPage", "Hotel")
+
+<div id="hotelListContainer">
+    <h4>Choose a pool to get more information and to book</h4>
+    <table>
+        @if (Model != null)
+        {
+@foreach (var hotel in Model)
+{
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => hotel.name)
+    </td>
+    <td>
+        @Html.ActionLink("Book", "Book", new { id = hotel.id })
+    </td>
+</tr>
+} }
+            else
+            {
+                <tr>
+                    We couldn't find any hotels with the given search term
+                </tr>
+            }
+
+    </table>
+</div>
+
+@Html.ActionLink("Show my profile", "Profile", "User")

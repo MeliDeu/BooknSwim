@@ -1,0 +1,74 @@
+﻿@model Projekt_BookNSwim.Models.ViewModelHUBSingle
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+@section MetaTags
+{
+    <meta name="keywords" content="Book'N'Swim, Pools, Hotels, Information, @Model.hotel.name" />
+}
+
+<h1>Booking details</h1>
+
+<h4>Your booking</h4>
+<table>
+    <thead>
+
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                @Model.booking.start_date.ToString("yyyy/MM/dd")
+            </td>
+            <td>
+                | @Model.booking.time
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Total price: @Model.booking.total_price
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Spots booked: @Model.booking.total_visitors
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<h4>Hotel information</h4>
+<table>
+    <thead>
+
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                @Model.hotel.name
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Model.hotel.address
+            </td>
+
+            <td>
+                @Model.hotel.city.
+            </td>
+
+            <td>
+                @Model.hotel.country
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Model.hotel.phone
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+@Html.ActionLink("Back to profile", "Profile", "User") |
+@Html.ActionLink("Cancel booking", "Cancel", "Booking", new { id = @Model.booking.id })

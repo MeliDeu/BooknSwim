@@ -1,0 +1,39 @@
+﻿@model Projekt_BookNSwim.Models.ViewModelHUBSingle;
+
+@section MetaTags
+{
+    <meta name="keywords" content="Book'N'Swim, Pools, Hotels, Booking, Confirmed" />
+}
+
+
+@{
+    ViewData["Title"] = "BookingConfirm";
+}
+
+
+<h2>Booking confirmed.</h2>
+
+<p>Here is an overview of your recent booking:</p>
+
+<div class="bookingOverview">
+    <h3>Your visit at @Model.hotel.name</h3>
+    <p>Booked date: @Model.booking.start_date.ToString("yyyy - dd - MM")</p>
+    <p>Booked time: @Model.booking.time</p>
+    @if (@Model.booking.total_visitors == 1)
+    {
+        <p>For: @Model.booking.total_visitors person</p>
+    }
+    else
+    {
+        <p>For: @Model.booking.total_visitors people</p>
+    }
+
+
+    <p>At check-in you have to pay: SEK @Model.booking.total_price</p>
+</div>
+
+@Html.ActionLink("Back to all Hotels", "HotelMainPage", "Hotel") |
+@Html.ActionLink("Show my profile", "Profile", "User")
+
+<p>@ViewBag.error </p>
+

@@ -1,0 +1,58 @@
+﻿@model Projekt_BookNSwim.Models.ViewModelHUB;
+
+@{
+    ViewData["Title"] = "Profile";
+}
+
+@section MetaTags
+{
+    <meta name="keywords" content="Book'N'Swim, Pools, Hotels, Booking, Profile" />
+}
+
+<div id="profileContainer" class="containers">
+    @Html.ActionLink("Logout", "Logout", "User")
+
+    <h1>Profile Page</h1>
+
+    <p>Welcome to your profile page, @Model.User.userFirstName</p>
+    <p>On this page you can administrate your bookings and change your personal information.</p>
+    <p>Please know that changing the booking is not possible. Instead cancel your booking and make a new one.</p>
+
+    @Html.ActionLink("Edit your profil", "Edit", new { @Model.User.userId })
+
+    <div id="profileBookingsContainer">
+        <p class="alert-danger">@ViewBag.delete</p>
+        <p>@ViewBag.errmsg</p>
+        <hr/>
+        <h4>Your bookings:</h4>
+        @*Om det finns en bookingslist, dvs den är inte tom, skapas en tabell. Annars visas endast felmeddelandet.*@
+        @if (Model.BookingsList != null)
+        {
+            <table class="table">
+                <tbody>
+                    @foreach (var booking in Model.BookingsList)
+                    {
+                        <tr>
+                            <td>
+                                @booking.start_date.ToString("yyyy/MM/dd")
+                            </td>
+                            <td>
+                                @booking.time
+                            </td>
+                            <td>
+                                @Html.ActionLink("Details", "Details", "Booking", new { id = booking.id }) |
+                                @Html.ActionLink("Cancel", "Cancel", "Booking", new { id = booking.id })
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+         }
+    </div>
+    
+
+    <h5>Here you can view all the hotels connected to this service and book your swimming experience:</h5>
+    @Html.ActionLink("Show all hotels", "HotelMainPage", "Hotel")
+
+ </div>
+

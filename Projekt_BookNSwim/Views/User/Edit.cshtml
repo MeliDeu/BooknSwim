@@ -1,0 +1,57 @@
+﻿@model Projekt_BookNSwim.Models.UserDetails
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+@section MetaTags
+{
+    <meta name="keywords" content="Book'N'Swim, Pools, Hotels, Booking, Edit" />
+}
+
+<h1>Edit</h1>
+
+<h4>UserDetails</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            @*<div class="form-group">
+                    <label asp-for="userPassword" class="control-label"></label>
+                    <input asp-for="userPassword" class="form-control" />
+                    <span asp-validation-for="userPassword" class="text-danger"></span>
+                </div>*@
+            <div class="form-group">
+                <label asp-for="userEmail" class="control-label"></label>
+                <input asp-for="userEmail" class="form-control" type="email" />
+                <span asp-validation-for="userEmail" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="userFirstName" class="control-label"></label>
+                <input asp-for="userFirstName" class="form-control" type="text" />
+                <span asp-validation-for="userFirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="userLastName" class="control-label"></label>
+                <input asp-for="userLastName" class="form-control" type="text" />
+                <span asp-validation-for="userLastName" class="text-danger"></span>
+            </div>
+            @if (ViewBag.error != "")
+            {
+                <div class="errormsg">
+                    <p>@ViewBag.error</p>
+                </div>
+            }
+            <div class="form-group">
+                <input type="submit" value="Update" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    @Html.ActionLink("Back to all Hotels", "HotelMainPage", "Hotel") |
+    @Html.ActionLink("Show my profile", "Profile", "User")
+</div>
+

@@ -1,0 +1,187 @@
+﻿/*Här kommer all CSS för sidorna*/
+
+/************************************************Generellt******************************************/
+:root {
+    /*FONTS*/
+    --fontSizeHeader: 40px;
+    --fontSizeHeader2: 20px;
+    --fontSizeText: 15px;
+    --fontSizeBtns: 10px;
+    --fontStyleHeader: "sans-serif";
+    --fontStyleText: "sans-serif";
+    --fontStyleBtns: "sans-serif";
+    --fontStyleLinks: "sans-serif";
+    /*COLORS*/
+    --mainClr: #084560;
+    --highlightClr: #1c7298;
+    --alertClr: #b95846;
+    --checkClr: #429059;
+    /*SIZES*/
+    --containerWidth: 80vw;
+    /*BorderRadius, shadow etc*/
+    --borderImg: 20%;
+}
+
+
+body {
+}
+
+#logotyp {
+    width: 30px;
+    margin-bottom: 5px;
+}
+
+div.container {
+    /*    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;*/
+}
+
+.container > main {
+    padding: 0;
+}
+
+.container h1, h2, h3, h4, h5, h6 {
+    margin-bottom: 20px;
+    color: var(--mainClr);
+ }
+
+.container h1, h2 {
+    font-size: var(--fontSizeHeader);
+}
+
+.container h4 {
+    font-size: var(--fontSizeHeader2);
+    margin-top: 25px;
+}
+
+.container button.btn-primary {
+    background-color: var(--mainClr);
+}
+
+/*Containers på alla sidor som innehåller alla element i main (för att kunna flexa etc)*/
+.containers {
+
+}
+
+.control-label {
+    font-weight: bolder;
+}
+
+.startLinks {
+    margin-left: 10px;
+}
+/************************************************IndexSida******************************************/
+#indexContainer em, a {
+    color: var(--highlightClr);
+}
+
+#indexContainer a:hover {
+    color: var(--mainClr);
+    cursor: pointer;
+}
+
+#indexImage {
+    width: 100%;
+    margin:0 0 20px 0;
+    border-bottom-left-radius: var(--borderImg);
+    border-top-right-radius: var(--borderImg);
+}
+
+
+
+/************************************************Profile******************************************/
+/*Profilepage*/
+#profileContainer {
+    position: relative;
+}
+
+#profileContainer > a:first-child, #profileContainer > a:last-child {
+    position: absolute;
+    border: 1px solid var(--mainClr);
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+    #profileContainer > a:first-child:hover, #profileContainer > a:last-child:hover, #seachBoxHotels button:hover, #hotelListContainer + a:hover, #hotelListContainer a:hover, #bookForm ~ a:hover {
+        background-color: var(--mainClr);
+        color: white;
+    }
+
+#profileContainer > a:last-child {
+    bottom: -60px;
+}
+
+#profileContainer > a:first-child {
+    top: 5px;
+    right: 0;
+}
+
+#profileBookingsContainer {
+    margin-top: 30px;
+}
+
+/************************************************Hotels******************************************/
+/*MainPage*/
+
+#seachBoxHotels {
+    margin-bottom: 30px;
+}
+
+    #seachBoxHotels button, #hotelListContainer + a, #hotelListContainer a, #bookForm ~ a {
+        border: 1px solid var(--mainClr);
+        padding: 5px 10px;
+        border-radius: 5px;
+        text-decoration: none;
+    }
+
+#searchBoxHotelsCity, #searchBoxHotelsName {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 50%;
+}
+
+#hotelListContainer {
+    margin-bottom: 40px;
+}
+
+#hotelListContainer table {
+    width: 100%;
+}
+
+#hotelListContainer tr {
+    height: 40px;
+}
+
+
+
+/*Book*/
+
+#hotelInfoBx {
+    padding: 20px;
+    border: 1px dotted var(--mainClr);
+    text-align: center;
+    margin-bottom: 10px;
+    width: 30%;
+/*    margin-left: auto;
+    margin-right: auto;*/
+}
+
+#bookHotelInfoContainer {
+    margin-bottom: 50px;
+}
+
+#bookForm {
+    margin-bottom: 30px;
+}
+
+#bookForm ~ a:last-of-type {
+    margin-left: 20px;
+}
+
+/*Confirm/Not Confirm*/
+
